@@ -13,7 +13,7 @@ const Footer = () => {
         {/* footer start */}
         <div className="flex items-center gap-1 mb-8">
           <img className="w-8" src={logoGif} alt="" />
-          <h2 className="text-2xl font-bold exo-font">QuickSend</h2>
+          <h2 className="text-2xl font-bold eczar-font">QuickSend</h2>
         </div>
         {/* footer end */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-0 py-4">

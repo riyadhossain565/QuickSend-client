@@ -11,7 +11,7 @@ const Navbar = () => {
             {/*Logo and title */}
             <Link to="/" className="flex items-center gap-1 text-white">
               <img className="w-8" src={logoGif} alt="" />
-              <h2 className="text-xl font-bold exo-font">QuickSend</h2>
+              <h2 className="text-xl font-bold eczar-font">QuickSend</h2>
             </Link>
             <div className="text-white">
               <NavLink to="/">Home</NavLink>

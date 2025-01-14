@@ -1,19 +1,26 @@
 import React from "react";
 import Container from "../../../Shared/Container";
 import bannerImg from "../../../assets/banner/bannerImg.png";
+import Lottie from "lottie-react";
+import animation from "../../../assets/banner/Animation - 2.json";
 
 const Banner = () => {
   return (
     <div
-      className="w-full bg-center bg-cover h-[85vh] bg-white"
+      className="w-full bg-center bg-cover bg-white"
       style={{ backgroundImage: `url(${bannerImg})` }}
     >
       <div className=" bg-gray-900/100 opacity-90 h-full">
         <Container>
-          <div className="grid grid-cols-1 md:grid-cols-2">
+          <div className="flex flex-col md:flex-row-reverse justify-center items-center gap-5 py-20 md:py-24 lg:py-32">
+            {/* Banner animation */}
+            <div className="flex-1 w-5/6 mx-auto">
+              <Lottie animationData={animation} loop={true} />
+            </div>
+
             {/* heading and search bar */}
-            <div className="pt-40">
-              <h1 className="text-5xl font-bold exo-font text-white">
+            <div className="flex-1 ">
+              <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold eczar-font text-white">
                 Hassle-Free Delivery Management
               </h1>
               <p className="my-5 text-white">
@@ -21,13 +28,19 @@ const Banner = () => {
                 tracking every step of the journey, our platform ensures
                 efficiency and reliability.
               </p>
-              <div>
-                <input className="pl-4 pr-16 py-3 rounded-lg focus:shadow-lg focus:outline-0" type="search" placeholder="Search Here" />
-                <input className="text-white ml-3 bg-[#f39c12] px-8 py-3 rounded-lg cursor-pointer" type="button" value="Go" />
+              <div className="flex flex-col md:flex-row gap-4">
+                <input
+                  className="pl-4 pr-24 py-3 rounded-lg focus:shadow-lg focus:outline-0"
+                  type="search"
+                  placeholder="Search Here"
+                />
+                <input
+                  className="text-white bg-[#f39c12] px-8 py-3 rounded-lg cursor-pointer"
+                  type="button"
+                  value="Go"
+                />
               </div>
             </div>
-
-            <div></div>
           </div>
         </Container>
       </div>
