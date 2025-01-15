@@ -19,8 +19,8 @@ const Banner = () => {
             </div>
 
             {/* heading and search bar */}
-            <div className="flex-1 ">
-              <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold cinzel-font text-white">
+            <div className="flex-1 text-center">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold cinzel-font text-white">
                 Hassle-Free Delivery Management
               </h1>
               <p className="my-5 text-white">
@@ -28,14 +28,14 @@ const Banner = () => {
                 tracking every step of the journey, our platform ensures
                 efficiency and reliability.
               </p>
-              <div className="flex flex-col md:flex-row gap-4">
+              <div className="flex flex-col md:flex-row justify-center gap-4">
                 <input
-                  className="pl-4 pr-24 py-3 rounded-lg focus:shadow-lg focus:outline-0"
+                  className="pl-4 pr-32 py-3 rounded-lg focus:shadow-lg focus:outline-0"
                   type="search"
                   placeholder="Search Here"
                 />
                 <input
-                  className="text-white bg-[#f39c12] px-8 py-3 rounded-lg cursor-pointer"
+                  className="text-white bg-[#f39c12] px-10 py-3 rounded-lg cursor-pointer"
                   type="button"
                   value="Go"
                 />
