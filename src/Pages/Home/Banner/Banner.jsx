@@ -20,7 +20,7 @@ const Banner = () => {
 
             {/* heading and search bar */}
             <div className="flex-1 ">
-              <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold eczar-font text-white">
+              <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold cinzel-font text-white">
                 Hassle-Free Delivery Management
               </h1>
               <p className="my-5 text-white">
