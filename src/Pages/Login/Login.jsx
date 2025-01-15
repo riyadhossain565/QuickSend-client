@@ -11,11 +11,8 @@ const Login = () => {
       className="w-full bg-center bg-cover relative"
       style={{ backgroundImage: `url(${bgImg1})` }}
     >
-      <div className="h-full absolute">
-        <img className="h-screen" src={bgImg2} alt="" />
-      </div>
       <Container>
-        <div className="flex py-8">
+        <div className="flex py-8 flex-col md:flex-row">
           <div className="flex items-center">
             <div className="ml-8">
               <h1 className="text-5xl font-extrabold text-[#0d6efd] cinzel-font">
@@ -34,28 +31,28 @@ const Login = () => {
                 </NavLink>
               </p>
             </div>
-            <img className="w-2/4" src={loginImg} alt="" />
+            <img className="lg:w-2/4 hidden lg:block" src={loginImg} alt="" />
           </div>
-
+            {/*  */}
           <div>
-            <form className="space-y-8 pt-20">
+            <form className="space-y-6 pt-20">
               <div>
                 <input
-                  className="pl-4 pr-32 py-4 rounded-lg bg-gray-100 text-[#646464]"
+                  className="w-full pl-4 pr-32 py-4 rounded-lg bg-gray-100 text-[#646464]"
                   type="email"
                   placeholder="Enter Your Email"
                 />
               </div>
               <div>
                 <input
-                  className="pl-4 pr-32 py-4 rounded-lg bg-gray-100 text-[#646464]"
+                  className="w-full pl-4 pr-32 py-4 rounded-lg bg-gray-100 text-[#646464]"
                   type="password"
                   placeholder="Enter Your Password"
                 />
               </div>
               <div>
                 <input
-                  className="w-full bg-[#4460f1] cursor-pointer text-white font-bold py-4 rounded-lg"
+                  className="w-full bg-[#4460f1] hover:bg-[#151bde] cursor-pointer text-white font-bold py-4 rounded-lg"
                   type="submit"
                   value="Sign-In"
                 />

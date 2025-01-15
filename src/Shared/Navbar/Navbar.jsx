@@ -20,7 +20,7 @@ const Navbar = () => {
              <NavLink to="/">Home</NavLink>
              <IoIosNotifications className="text-2xl" />
              </div>
-              <Link className="ml-3" to="/login">
+              <Link className="ml-3" to="/signin">
                 Login
               </Link>
             </div>
