@@ -5,6 +5,7 @@ import { IoIosNotifications } from "react-icons/io";
 import { useContext, useState } from "react";
 import { AuthContext } from "@/src/Provider/AuthProvider";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import avatarImg from "../../assets/login/placeholder.jpg"
 
 
 const Navbar = () => {
@@ -42,8 +43,8 @@ const Navbar = () => {
                     className="w-10 cursor-pointer"
                   >
                     <AvatarImage
-                      src="https://github.com/shadcn.png"
-                      alt="@shadcn"
+                       src={user && user.photoURL ? user.photoURL : avatarImg}
+                      alt="Profile Picture"
                       className="rounded-full hover:border-[#f39c12] hover:border-2"
                     />
                   </Avatar>
@@ -52,7 +53,7 @@ const Navbar = () => {
                     <div className="absolute rounded-xl shadow-md w-[40vw] md:w-[10vw] bg-black overflow-hidden right-10 top-16 text-sm">
                       
                       <div className="px-4 py-3 font-semibold">
-                        <p>Name</p>
+                        <p title="User Name">{user?.displayName}</p>
                       </div>
                       <div className="px-4 py-3 hover:text-black hover:underline hover:bg-neutral-100 transition font-semibold">
                         <Link to="/dashboard">Dashboard</Link>

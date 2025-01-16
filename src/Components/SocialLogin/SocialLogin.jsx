@@ -1,9 +1,20 @@
-import React from "react";
+import useAuth from "@/src/Hooks/useAuth/useAuth";
+import { Result } from "postcss";
+
 
 const SocialLogin = () => {
+  const {signInWithGoogle} = useAuth()
+
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+    .then((result) => {
+      console.log(result.user);
+      
+    })
+  }
   return (
     <div
-      // onClick={handleGoogleSignIn}
+      onClick={handleGoogleSignIn}
       className="flex cursor-pointer items-center justify-center my-4 text-gray-600 transition-colors duration-300 transform border rounded-lg   hover:bg-gray-50 "
     >
       <div className="px-4 py-2">

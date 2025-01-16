@@ -27,8 +27,18 @@ const SignUp = () => {
     .then(result => {
       const loggedUser = result.user;
       console.log("user",loggedUser)
-      navigate('/')
+
+      updateUserProfile(data.name, data.photoURL)
+      .then(() => {
+        console.log("user profile info updated")
+        reset()
+        // sweet alert
+
+        navigate('/')
+      })
+      .catch((err) => console.log(err))
     })
+
   };
 
   return (
@@ -68,6 +78,7 @@ const SignUp = () => {
                 <input
                   className="w-full pl-4 py-4 rounded-lg bg-gray-100 text-[#646464] focus:outline-none"
                   type="text"
+                  name="name"
                   {...register("name", { required: true })}
                   placeholder="Enter Your Name"
                   
@@ -92,6 +103,7 @@ const SignUp = () => {
                 <input
                   className="w-full pl-4 py-4 rounded-lg bg-gray-100 text-[#646464] focus:outline-none"
                   type="url"
+                  name="photo"
                   {...register("photo", { required: true })}
                   placeholder="Enter Your PhotoURL"
                   
