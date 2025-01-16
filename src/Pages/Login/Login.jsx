@@ -1,16 +1,42 @@
 import bgImg1 from "../../assets/login/bg1.png";
-import bgImg2 from "../../assets/login/shape1.png";
 import loginImg from "../../assets/login/bg34-1.png";
 import Container from "@/src/Shared/Container";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "@/src/Components/SocialLogin/SocialLogin";
+import { Helmet } from "react-helmet-async";
+import { AuthContext } from "@/src/Provider/AuthProvider";
+import { useContext } from "react";
 
 const Login = () => {
+  const { signIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+
+    signIn(email, password).then((result) => {
+      const user = result.user;
+      form.reset();
+
+      navigate(from, { replace: true });
+    });
+  };
+
   return (
     <div
       className="w-full bg-center bg-cover relative"
       style={{ backgroundImage: `url(${bgImg1})` }}
     >
+      <Helmet>
+        <title>QuickSend | SignIn</title>
+      </Helmet>
       <Container>
         <div className="flex py-8 flex-col md:flex-row">
           <div className="flex items-center">
@@ -19,7 +45,7 @@ const Login = () => {
                 <Link to="/">QiuckSend</Link>
               </h1>
               <h3 className="py-6 text-3xl font-extrabold">
-                Sign In to Rechage Direct
+                Sign In to Recharge Direct
               </h3>
               <p className="text-lg">
                 If you don't have an account <br /> You can{" "}
@@ -31,23 +57,27 @@ const Login = () => {
                 </NavLink>
               </p>
             </div>
-            <img className="lg:w-2/4 hidden lg:block" src={loginImg} alt="" />
+            <img className="lg:w-2/5 hidden lg:block" src={loginImg} alt="" />
           </div>
-            {/*  */}
-          <div>
-            <form className="space-y-6 pt-20">
+          {/* form  */}
+          <div className="lg:w-2/5">
+            <form onSubmit={handleLogin} className="space-y-6 pt-20">
               <div>
                 <input
-                  className="w-full pl-4 pr-32 py-4 rounded-lg bg-gray-100 text-[#646464]"
+                  className="w-full pl-4 pr-52 py-4 rounded-lg bg-gray-100 text-[#646464] focus:outline-none"
                   type="email"
+                  name="email"
                   placeholder="Enter Your Email"
+                  required
                 />
               </div>
               <div>
                 <input
-                  className="w-full pl-4 pr-32 py-4 rounded-lg bg-gray-100 text-[#646464]"
+                  className="w-full pl-4 pr-52 py-4 rounded-lg bg-gray-100 text-[#646464] focus:outline-none"
                   type="password"
+                  name="password"
                   placeholder="Enter Your Password"
+                  required
                 />
               </div>
               <div>
