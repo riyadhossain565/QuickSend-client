@@ -6,6 +6,9 @@ import { Link, NavLink } from "react-router-dom";
 import SocialLogin from "@/src/Components/SocialLogin/SocialLogin";
 
 const SignUp = () => {
+
+    
+
   return (
     <div
       className="w-full bg-center bg-cover relative"

@@ -5,13 +5,13 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCTvdAQZu_HZiZWJUttuLBbakt49cv4nyQ",
-  authDomain: "quick-send-f2412.firebaseapp.com",
-  projectId: "quick-send-f2412",
-  storageBucket: "quick-send-f2412.firebasestorage.app",
-  messagingSenderId: "23342919015",
-  appId: "1:23342919015:web:aa0bf6b0efe3c84d1fd3c2"
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
