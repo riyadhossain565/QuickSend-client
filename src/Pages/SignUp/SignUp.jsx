@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "@/src/Provider/AuthProvider";
 import { Helmet } from "react-helmet-async";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
 
@@ -20,9 +21,10 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
 
-  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const { createUser, updateUserProfile, loading } = useContext(AuthContext);
 
   const onSubmit = (data) => {
+
     createUser(data.email, data.password)
     .then(result => {
       const loggedUser = result.user;
@@ -33,7 +35,13 @@ const SignUp = () => {
         console.log("user profile info updated")
         reset()
         // sweet alert
-
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "User Successfully Sign-UP",
+          showConfirmButton: false,
+          timer: 1500
+        });
         navigate('/')
       })
       .catch((err) => console.log(err))

@@ -6,9 +6,10 @@ import SocialLogin from "@/src/Components/SocialLogin/SocialLogin";
 import { Helmet } from "react-helmet-async";
 import { AuthContext } from "@/src/Provider/AuthProvider";
 import { useContext } from "react";
+import toast from "react-hot-toast";
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { signIn, loading } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -25,6 +26,7 @@ const Login = () => {
       const user = result.user;
       form.reset();
       // toast 
+      toast.success("User Successfully SignIn")
       navigate(from, { replace: true });
     });
   };
