@@ -49,11 +49,12 @@ const AuthProvider = ({ children }) => {
     });
   };
 
+  // onAuthStateChange
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       console.log("current user--->", currentUser);
       if (currentUser?.email) {
-        setUser(currentUser);
+        setUser(currentUser)
         // send user info in db
         await axios.post(
           `${import.meta.env.VITE_API_URL}/users/${currentUser?.email}`,

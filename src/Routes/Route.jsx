@@ -5,6 +5,7 @@ import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import Dashboard from "../Layouts/Dashboard";
 import PrivateRoute from "./PrivateRoute";
+import BookParcel from "../Pages/Dashboard/BookParcel/BookParcel";
 
 const Route = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const Route = createBrowserRouter([
     ),
     children: [
       // user menu
+      {
+        path: "book-parcel",
+        element: <BookParcel />
+      }
     ],
   },
 ]);

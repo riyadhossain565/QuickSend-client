@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import UserMenu from "./Menu/UserMenu";
 import DevileryMenu from "./Menu/DevileryMenu";
 import AdminMenu from "./Menu/AdminMenu";
+import { AiOutlineBars } from 'react-icons/ai'
 
 const Sidebar = () => {
   const [isActive, setActive] = useState(false);
@@ -14,11 +15,24 @@ const Sidebar = () => {
   return (
     <>
       {/* Small screen Navbar */}
-      {/* todo */}
+      <div className="bg-gray-100 text-gray-800 flex justify-between md:hidden">
+        <div>
+          <div className="block cursor-pointer p-4 font-bold">
+            <Link to="/">QuickSend</Link>
+          </div>
+        </div>
+
+        <button
+          onClick={handleToggle}
+          className="mobile-menu-button p-4 focus:outline-none focus:bg-gray-200"
+        >
+          <AiOutlineBars className="h-5 w-5" />
+        </button>
+      </div>
 
       {/* sidebar */}
       <div
-        className={`z-10 md:fixed overflow-x-hidden bg-[#333] w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform 
+        className={`z-10 md:fixed overflow-x-hidden bg-[#333] w-64 space-y-6  py-4 absolute inset-y-0 left-0 transform 
       ${
         isActive && "-translate-x-full"
       }  md:translate-x-0  transition duration-200 ease-in-out`}
