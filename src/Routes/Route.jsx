@@ -6,6 +6,7 @@ import SignUp from "../Pages/SignUp/SignUp";
 import Dashboard from "../Layouts/Dashboard";
 import PrivateRoute from "./PrivateRoute";
 import BookParcel from "../Pages/Dashboard/UserDashboard/BookParcel/BookParcel";
+import MyParcels from "../Pages/Dashboard/UserDashboard/MyParcels/MyParcels";
 
 const Route = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const Route = createBrowserRouter([
       {
         path: "book-parcel",
         element: <BookParcel />
+      },
+      {
+        path: "my-parcels",
+        element: <MyParcels />
       }
     ],
   },

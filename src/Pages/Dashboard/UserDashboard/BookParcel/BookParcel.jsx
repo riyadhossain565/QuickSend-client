@@ -52,6 +52,7 @@ const BookParcel = () => {
       longitude,
       price,
       status: "pending",
+      bookingDate: new Date(Date.now()).toISOString(),
     };
 
     console.log(newBooking);
