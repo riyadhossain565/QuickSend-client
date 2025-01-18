@@ -1,4 +1,5 @@
 import useAuth from "@/src/Hooks/useAuth/useAuth";
+import useAxiosSecure from "@/src/Hooks/useAxiosSecure/useAxiosSecure";
 import axios from "axios";
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
@@ -9,14 +10,16 @@ import Swal from "sweetalert2";
 
 const BookParcel = () => {
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
   const [startDate, setStartDate] = useState(new Date());
   const [price, setPrice] = useState(50);
 
-    // Handle price calculation based on parcel weight
-    const handleWeightChange = (e) => {
-      const weight = parseFloat(e.target.value) || 0;
-      setPrice(weight * 50); // Price per kg (50Tk)
-    };
+  // Handle price calculation based on parcel weight
+  const handleWeightChange = (e) => {
+    const weight = parseFloat(e.target.value) || 0;
+    if (weight > 2) setPrice(150);
+    else setPrice(weight * 50); // Price per kg (50Tk)
+  };
 
   // handle form submit
   const handleSubmit = async (e) => {
@@ -35,7 +38,6 @@ const BookParcel = () => {
     const latitude = form.latitude.value;
     const longitude = form.longitude.value;
 
-
     const newBooking = {
       name,
       email,
@@ -48,31 +50,29 @@ const BookParcel = () => {
       deliveryDate,
       latitude,
       longitude,
-      price
-    }
+      price,
+      status: "pending",
+    };
 
-    console.log(newBooking)
+    console.log(newBooking);
 
     try {
       // 1. make a post request
-      await axios.post(
-        `${import.meta.env.VITE_API_URL}/book-parcel`,newBooking
-      )
+      await axiosSecure.post("/book-parcel", newBooking);
       // 2. Reset form
-      form.reset()
-      // 3. sweet alert      
-       Swal.fire({
+      form.reset();
+      // 3. sweet alert
+      Swal.fire({
         position: "center",
         icon: "success",
         title: "Parcel Successfully Booked",
         showConfirmButton: false,
-        timer: 1500
-      });  
+        timer: 1500,
+      });
     } catch (err) {
-      console.log(err)
-      toast.error(err.message)
+      console.log(err);
+      toast.error(err.message);
     }
-
   };
 
   return (
@@ -81,7 +81,9 @@ const BookParcel = () => {
         <title>Book A Parcel | Dashboard</title>
       </Helmet>
       <div className="max-w-lg mx-auto p-8 bg-gray-100 rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold text-center mb-6 cinzel-font">Book a Parcel</h2>
+        <h2 className="text-2xl font-bold text-center mb-6 cinzel-font">
+          Book a Parcel
+        </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Name */}
           <div>
@@ -192,10 +194,10 @@ const BookParcel = () => {
             </label>
             {/* Date Picker Input Field */}
             <DatePicker
-                className="border p-2 rounded-md"
-                selected={startDate}
-                onChange={(date) => setStartDate(date)}
-              />
+              className="border p-2 rounded-md"
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+            />
           </div>
 
           {/* Delivery Latitude */}
