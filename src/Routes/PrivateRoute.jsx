@@ -1,5 +1,6 @@
 import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../Hooks/useAuth/useAuth";
+import Loadingspinner from "../Shared/LoadingSpinner/Loadingspinner";
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useAuth();
@@ -7,7 +8,7 @@ const PrivateRoute = ({ children }) => {
 
   if (loading) {
     return (
-      <span className="icon-[svg-spinners--12-dots-scale-rotate] w-6 h-6 block mx-auto text-[#333]"></span>
+      <Loadingspinner />
     );
   }
 

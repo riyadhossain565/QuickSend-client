@@ -11,9 +11,9 @@ const UserMenu = () => {
         <li>
           <NavLink
             to="/dashboard/book-parcel"
-            className={({isActive}) => 
-                `text-lg text-white exo-font flex items-center gap-2 py-3 
-                ${isActive ? 'bg-gray-200 text-black' : 'hover:underline'}`
+            className={({ isActive }) =>
+              `text-lg exo-font flex items-center gap-2 py-3 
+                ${isActive ? "bg-gray-200 text-[#333]" : "hover:underline text-white"}`
             }
           >
             <MdAddHome className="text-xl ml-3" />
@@ -23,9 +23,9 @@ const UserMenu = () => {
         <li>
           <NavLink
             to="/dashboard/my-parcels"
-            className={({isActive}) => 
-                `text-lg text-white exo-font flex items-center gap-2 py-3 
-                ${isActive ? 'bg-gray-200 text-black' : 'hover:underline'}`
+            className={({ isActive }) =>
+              `text-lg exo-font flex items-center gap-2 py-3 
+                ${isActive ? "bg-gray-200 text-[#333]" : "hover:underline text-white"}`
             }
           >
             <FaShoppingBag className="text-xl ml-3" />
@@ -35,9 +35,9 @@ const UserMenu = () => {
         <li>
           <NavLink
             to="/dashboard/my-profile"
-            className={({isActive}) => 
-                `text-lg text-white exo-font flex items-center gap-2 py-3 
-                ${isActive ? 'bg-gray-200 text-black' : 'hover:underline'}`
+            className={({ isActive }) =>
+              `text-lg text-white exo-font flex items-center gap-2 py-3 
+                ${isActive ? "bg-gray-200 text-[#333]" : "hover:underline text-white"}`
             }
           >
             <FaUser className="text-xl ml-3" />
