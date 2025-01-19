@@ -10,7 +10,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { app } from "../firebase/firebase.init";
-import axios from "axios";
+import useAxiosPublic from "../Hooks/useAxiosPublic/useAxiosPublic";
 
 export const AuthContext = createContext(null);
 
@@ -19,6 +19,7 @@ const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
+  const axiosPublic = useAxiosPublic();
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -51,36 +52,29 @@ const AuthProvider = ({ children }) => {
 
   // onAuthStateChange
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log("current user--->", currentUser);
-      if (currentUser?.email) {
-        setUser(currentUser)
-        // send user info in db
-        await axios.post(
-          `${import.meta.env.VITE_API_URL}/users/${currentUser?.email}`,
-          {
-            name: currentUser?.displayName,
-            image: currentUser?.photoURL,
-            email: currentUser?.email,
-          }
-        );
+      setUser(currentUser);
 
-        // Get JWT token
-        await axios.post(
-          `${import.meta.env.VITE_API_URL}/jwt`,
-          {
-            email: currentUser?.email,
-          },
-          { withCredentials: true }
-        );
+      if (currentUser) {
+        //get token and store client
+        const userInfo = { email: currentUser.email };
+        axiosPublic.post("/jwt", userInfo)
+        .then(res => {
+          if(res.data.token){
+            localStorage.setItem('access-token', res.data.token);
+          }
+        })
       } else {
-        setUser(currentUser);
-        await axios.get(`${import.meta.env.VITE_API_URL}/logout`, {
-          withCredentials: true,
-        });
+        // todo: remove token
+        localStorage.removeItem('access-token');
       }
+
       setLoading(false);
+     
+
     });
+
     return () => {
       return unsubscribe;
     };
@@ -89,6 +83,7 @@ const AuthProvider = ({ children }) => {
   const authInfo = {
     user,
     loading,
+    setUser,
     setLoading,
     createUser,
     signIn,

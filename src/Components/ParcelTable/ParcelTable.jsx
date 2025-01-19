@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { TableCell, TableRow } from "@/components/ui/table";
 import { format } from "date-fns";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ParcelTable = ({ item }) => {
   const { parcelType, deliveryDate, status, bookingDate, deliveryManId, approximateDeliveryDate} = item || {};
@@ -34,12 +35,13 @@ const ParcelTable = ({ item }) => {
       <TableCell>
         <div className="flex  gap-2">
           <Button
-            variant="primary"
             size="sm"
             className="text-green-500 bg-green-100/90 hover:underline px-2 py-1"
-            // onClick={() => handleUpdate(parcel.id)}
-          >
+            >
+            <Link to='/update-parcel'>
+            
             Update
+            </Link>
           </Button>
           <Button
             variant="destructive"

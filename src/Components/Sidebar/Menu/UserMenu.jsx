@@ -36,7 +36,7 @@ const UserMenu = () => {
           <NavLink
             to="/dashboard/my-profile"
             className={({ isActive }) =>
-              `text-lg text-white exo-font flex items-center gap-2 py-3 
+              `text-lg exo-font flex items-center gap-2 py-3 
                 ${isActive ? "bg-gray-200 text-[#333]" : "hover:underline text-white"}`
             }
           >

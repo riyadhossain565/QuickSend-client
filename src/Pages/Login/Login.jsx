@@ -9,26 +9,28 @@ import { useContext } from "react";
 import toast from "react-hot-toast";
 
 const Login = () => {
-  const { signIn, loading } = useContext(AuthContext);
+  const { signIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
 
   const from = location.state?.from?.pathname || "/";
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    // console.log(email, password);
 
-    signIn(email, password).then((result) => {
-      const user = result.user;
-      form.reset();
-      // toast 
-      toast.success("User Successfully SignIn")
+    try {
+      await signIn(email, password);
+      // toast
+      toast.success("SignIn Successfully");
       navigate(from, { replace: true });
-    });
+    } catch {
+      console.log(err);
+      toast.error(err?.message);
+    }
   };
 
   return (

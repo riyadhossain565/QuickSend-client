@@ -7,8 +7,8 @@ const Dashboard = () => {
       {/* Left side: sidebar component */}
       <Sidebar />
       {/* Right side: Dashboard dynamic content */}
-      <div className="flex-1 md:ml-72">
-        <div className="p-5">
+      <div className="flex-1 md:ml-64">
+        <div className="">
           <Outlet></Outlet>
         </div>
       </div>

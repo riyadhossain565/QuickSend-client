@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+
 import { Helmet } from "react-helmet-async";
 import {
   Table,
@@ -7,9 +7,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"; // Assuming shadcn/ui table components
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import Loadingspinner from "@/src/Shared/LoadingSpinner/Loadingspinner";
 import ParcelTable from "@/src/Components/ParcelTable/ParcelTable";
 import useParcel from "@/src/Hooks/useParcel/useParcel";
 
@@ -17,12 +14,12 @@ const MyParcels = () => {
   const [parcel, refetch] = useParcel();
 
   return (
-    <div>
+    <div className="p-5">
       <Helmet>
         <title>My Parcels | Dashboard</title>
       </Helmet>
       <div className="max-w-5xl mx-auto p-8 bg-gray-100 rounded-lg shadow-md">
-        <h2 className="text-3xl font-bold text-center cinzel-font">
+        <h2 className="text-4xl font-bold text-center cinzel-font">
           My Parcels
         </h2>
         <h2 className="text-2xl font-bold mb-4 exo-font">

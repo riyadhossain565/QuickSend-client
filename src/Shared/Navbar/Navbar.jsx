@@ -40,10 +40,10 @@ const Navbar = () => {
                 <>
                   <Avatar
                     onClick={() => setIsOpen(!isOpen)}
-                    className="w-10 cursor-pointer"
+                    className="w-10 h-10 cursor-pointer"
                   >
                     <AvatarImage
-                       src={user && user.photoURL ? user.photoURL : avatarImg}
+                       src={user && user?.photoURL ? user?.photoURL : avatarImg}
                       alt="Profile Picture"
                       className="rounded-full hover:border-[#f39c12] hover:border-2"
                     />

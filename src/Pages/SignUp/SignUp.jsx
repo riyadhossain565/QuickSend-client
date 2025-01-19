@@ -8,11 +8,12 @@ import { useContext } from "react";
 import { AuthContext } from "@/src/Provider/AuthProvider";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 const SignUp = () => {
 
   const navigate = useNavigate();
-
 
   const {
     register,
@@ -21,18 +22,28 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
 
-  const { createUser, updateUserProfile, loading } = useContext(AuthContext);
+  const { createUser, setUser, updateUserProfile } = useContext(AuthContext);
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
 
-    createUser(data.email, data.password)
-    .then(result => {
-      const loggedUser = result.user;
-      console.log("user",loggedUser)
+    console.log(data)
+    try {
+      // user registration 
+      const result = await createUser(data.email, data.password)
+      console.log(result)
+      await updateUserProfile(data.name, data.photo)
+      setUser({...result.user, photoUrl: data.photo, displayName: data.name})
 
-      updateUserProfile(data.name, data.photoURL)
-      .then(() => {
-        console.log("user profile info updated")
+      // create user entry in the db
+      const userInfo = {
+        name: data.name,
+        email: data.email,
+        photo: data.photo,
+      }
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/users`, userInfo)
+
+      if(res.data.insertedId){
+        console.log("user Add to the databse")
         reset()
         // sweet alert
         Swal.fire({
@@ -43,10 +54,12 @@ const SignUp = () => {
           timer: 1500
         });
         navigate('/')
-      })
-      .catch((err) => console.log(err))
-    })
+      }
 
+    } catch (err) {
+      console.log(err)
+      toast.error(err?.message)
+    }
   };
 
   return (

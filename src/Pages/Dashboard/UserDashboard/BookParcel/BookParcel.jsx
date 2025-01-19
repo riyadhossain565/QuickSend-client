@@ -77,12 +77,12 @@ const BookParcel = () => {
   };
 
   return (
-    <div>
+    <div className="p-5">
       <Helmet>
         <title>Book A Parcel | Dashboard</title>
       </Helmet>
       <div className="max-w-lg mx-auto p-8 bg-gray-100 rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold text-center mb-6 cinzel-font">
+        <h2 className="text-4xl font-bold text-center mb-6 cinzel-font">
           Book a Parcel
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -242,7 +242,7 @@ const BookParcel = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-[#f39c12] text-black py-2 rounded-lg hover:bg-[#333] hover:text-white"
+            className="w-full bg-[#f39c12] text-black exo-font transition-all py-2 my-4 rounded-lg hover:bg-[#333] hover:text-white"
           >
             Book Parcel
           </button>
