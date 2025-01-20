@@ -2,6 +2,9 @@ import { Button } from "@/components/ui/button";
 import { TableCell, TableRow } from "@/components/ui/table";
 import { format } from "date-fns";
 import React from "react";
+import { FaCommentDollar } from "react-icons/fa";
+import { GiCancel } from "react-icons/gi";
+import { MdMovieEdit, MdRateReview } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 const ParcelTable = ({ item }) => {
@@ -32,7 +35,7 @@ const ParcelTable = ({ item }) => {
   };
 
   return (
-    <TableRow className="border-2 hover:bg-gray-200">
+    <TableRow className="border-2 bg-gray-100 transition-all hover:bg-gray-200">
       <TableCell>{parcelType}</TableCell>
       <TableCell>{format(new Date(deliveryDate), "P")}</TableCell>
       <TableCell>
@@ -40,44 +43,51 @@ const ParcelTable = ({ item }) => {
       </TableCell>
       <TableCell>{format(new Date(bookingDate), "P")}</TableCell>
       <TableCell>{deliveryManId ? deliveryManId : "Not Assigned"}</TableCell>
-      <TableCell className="text-orange-500">{status}</TableCell>
       <TableCell>
-        <div className="flex  gap-2">
-          <Link to={`/dashboard/update-parcel/${_id}`}>
-            <Button
-              size="sm"
-              className="text-green-500 bg-green-100/90 hover:underline px-2 py-1"
-            >
-              Update
-            </Button>
-          </Link>
-          <Button
-            variant="destructive"
-            size="sm"
-            className="text-red-500 bg-red-100/90 px-2 py-1 hover:underline"
-            // onClick={() => handleCancel(parcel.id)}
-          >
-            Cancel
+        <p className="text-orange-600 bg-orange-500/30 p-1 rounded-md">
+          {status}
+        </p>
+      </TableCell>
+      <TableCell>
+        <Link to={`/dashboard/update-parcel/${_id}`}>
+          <Button variant="outline" className="bg-green-400 hover:bg-green-500 px-2 py-1">
+            <MdMovieEdit className="text-xl" />
           </Button>
-          {item.bookingStatus === "delivered" && (
-            <Button
-              variant="success"
-              size="sm"
-              className="text-yellow-500 bg-yellow-100/90 px-2 py-1 hover:underline"
-              //   onClick={() => handleReview(parcel.id)}
-            >
-              Review
-            </Button>
-          )}
-          <Button
-            variant="secondary"
-            size="sm"
-            className="text-blue-500 bg-blue-100/90 px-2 py-1 hover:underline"
-            // onClick={() => handlePay(parcel.id)}
-          >
-            Pay
-          </Button>
-        </div>
+        </Link>
+      </TableCell>
+      <TableCell>
+        {" "}
+        <Button
+          variant="outline"
+          
+          className=" bg-red-400 hover:bg-red-500 px-2 py-1"
+          // onClick={() => handleCancel(parcel.id)}
+        >
+          <GiCancel className="text-xl" />
+        </Button>
+      </TableCell>
+      <TableCell>
+        <Button
+          variant="outline"
+          className=" bg-blue-400 hover:bg-blue-500 px-2 py-1"
+          // onClick={() => handlePay(parcel.id)}
+        >
+          <FaCommentDollar className="text-xl" />
+        </Button>
+      </TableCell>
+      <TableCell>
+        <Button
+          variant="outline"
+          className={` px-2 py-1 ${
+            item.bookingStatus !== "delivered"
+              ? "cursor-not-allowed bg-gray-300"
+              : "cursor-pointer bg-yellow-400 hover:bg-yellow-500"
+          }`}
+          //   onClick={() => handleReview(parcel.id)}
+          disabled={item.bookingStatus !== "delivered"}
+        >
+          <MdRateReview className="text-xl" />
+        </Button>
       </TableCell>
     </TableRow>
   );

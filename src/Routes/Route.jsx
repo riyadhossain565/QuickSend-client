@@ -9,6 +9,7 @@ import BookParcel from "../Pages/Dashboard/UserDashboard/BookParcel/BookParcel";
 import MyParcels from "../Pages/Dashboard/UserDashboard/MyParcels/MyParcels";
 import MyProfile from "../Pages/Dashboard/UserDashboard/MyProfile/MyProfile";
 import UpdateParcel from "../Components/UpdateParcel/UpdateParcel";
+import AllUsers from "../Pages/Dashboard/AdminDashboard/AllUser/AllUsers";
 
 const Route = createBrowserRouter([
   {
@@ -55,6 +56,11 @@ const Route = createBrowserRouter([
       {
         path: "my-profile",
         element: <MyProfile />
+      },
+      // Admin menu
+      {
+        path: "all-users",
+        element: <AllUsers />
       }
     ],
   },
