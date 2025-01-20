@@ -5,44 +5,52 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ParcelTable = ({ item }) => {
-  const { parcelType, deliveryDate, status, bookingDate, deliveryManId, approximateDeliveryDate} = item || {};
+  const {
+    _id,
+    parcelType,
+    deliveryDate,
+    status,
+    bookingDate,
+    deliveryManId,
+    approximateDeliveryDate,
+  } = item || {};
 
-  
-    const handleUpdate = (parcelId) => {
-      console.log("Update parcel:", parcelId);
-    };
-  
-    const handleCancel = (parcelId) => {
-      console.log("Cancel parcel:", parcelId);
-    };
-  
-    const handleReview = (parcelId) => {
-      console.log("Review parcel:", parcelId);
-    };
-  
-    const handlePay = (parcelId) => {
-      console.log("Pay for parcel:", parcelId);
-    };
-  
+  const handleUpdate = (parcelId) => {
+    console.log("Update parcel:", parcelId);
+  };
+
+  const handleCancel = (parcelId) => {
+    console.log("Cancel parcel:", parcelId);
+  };
+
+  const handleReview = (parcelId) => {
+    console.log("Review parcel:", parcelId);
+  };
+
+  const handlePay = (parcelId) => {
+    console.log("Pay for parcel:", parcelId);
+  };
+
   return (
     <TableRow className="border-2 hover:bg-gray-200">
       <TableCell>{parcelType}</TableCell>
       <TableCell>{format(new Date(deliveryDate), "P")}</TableCell>
-      <TableCell>{approximateDeliveryDate ? approximateDeliveryDate : "Not Assigned"}</TableCell>
+      <TableCell>
+        {approximateDeliveryDate ? approximateDeliveryDate : "Not Assigned"}
+      </TableCell>
       <TableCell>{format(new Date(bookingDate), "P")}</TableCell>
       <TableCell>{deliveryManId ? deliveryManId : "Not Assigned"}</TableCell>
       <TableCell className="text-orange-500">{status}</TableCell>
       <TableCell>
         <div className="flex  gap-2">
-          <Button
-            size="sm"
-            className="text-green-500 bg-green-100/90 hover:underline px-2 py-1"
+          <Link to={`/dashboard/update-parcel/${_id}`}>
+            <Button
+              size="sm"
+              className="text-green-500 bg-green-100/90 hover:underline px-2 py-1"
             >
-            <Link to='/update-parcel'>
-            
-            Update
-            </Link>
-          </Button>
+              Update
+            </Button>
+          </Link>
           <Button
             variant="destructive"
             size="sm"
@@ -56,7 +64,7 @@ const ParcelTable = ({ item }) => {
               variant="success"
               size="sm"
               className="text-yellow-500 bg-yellow-100/90 px-2 py-1 hover:underline"
-            //   onClick={() => handleReview(parcel.id)}
+              //   onClick={() => handleReview(parcel.id)}
             >
               Review
             </Button>

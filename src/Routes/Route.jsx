@@ -49,7 +49,8 @@ const Route = createBrowserRouter([
       },,
       {
         path: "update-parcel/:id",
-        element: <UpdateParcel />
+        element: <UpdateParcel />,
+        
       },
       {
         path: "my-profile",

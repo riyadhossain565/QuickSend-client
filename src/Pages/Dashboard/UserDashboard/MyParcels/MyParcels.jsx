@@ -39,7 +39,7 @@ const MyParcels = () => {
                 </TableHead>
                 <TableHead className="px-4 py-3">Booking Date</TableHead>
                 <TableHead className="px-4 py-3">Delivery Man ID</TableHead>
-                <TableHead className="px-4 py-3">Booking Status</TableHead>
+                <TableHead className="px-4 py-3">Status</TableHead>
                 <TableHead className="px-4 py-3">Actions</TableHead>
               </TableRow>
             </TableHeader>
