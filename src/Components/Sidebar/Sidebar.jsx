@@ -3,15 +3,21 @@ import { Link } from "react-router-dom";
 import UserMenu from "./Menu/UserMenu";
 import DevileryMenu from "./Menu/DevileryMenu";
 import AdminMenu from "./Menu/AdminMenu";
-import { AiOutlineBars } from 'react-icons/ai'
+import { AiOutlineBars } from "react-icons/ai";
+import useUserRole from "@/src/Hooks/useUserRole/useUserRole";
 
 const Sidebar = () => {
   const [isActive, setActive] = useState(false);
+  const [userRole] = useUserRole();
+
+  const {role} = userRole || {}
+  console.log(userRole);
 
   // sidebar handler
   const handleToggle = () => {
     setActive(!isActive);
   };
+
   return (
     <>
       {/* Small screen Navbar */}
@@ -46,9 +52,10 @@ const Sidebar = () => {
         <div>
           <nav>
             {/* menu items */}
-            <UserMenu />
-            <DevileryMenu />
-            <AdminMenu />
+
+            {role === "user" && <UserMenu />}
+            {role === "deliveryMan" && <DevileryMenu />}
+            {role === "admin" && <AdminMenu />}
           </nav>
         </div>
       </div>

@@ -15,7 +15,17 @@ import { FaUserTag } from "react-icons/fa";
 
 const AllUsers = () => {
   const [users, refetch] = useUsers();
+  console.log(users)
 
+
+  const handleRoleChange = async () => {
+    try{
+
+    } 
+    catch (err) {
+      console.log(err)
+    }
+  }
 
   return (
     <div className="p-6">
@@ -62,19 +72,32 @@ const AllUsers = () => {
                   <TableCell className="px-8">{user.totalParcels}</TableCell>
                   <TableCell className="px-8">{user.totalSpent}</TableCell>
                   <TableCell className="px-8">
+
                     <Button
                       variant="outline"
-                      className="bg-blue-500/60 hover:bg-blue-600 transition-all ml-6"
+                      // className=" "
+                      className={`transition-all ml-6 ${
+                        user.role === "admin"
+                          ? "cursor-not-allowed bg-gray-300"
+                          : "cursor-pointer bg-blue-500/60 hover:bg-blue-600"
+                      }`}
                       onClick={() => handleRoleChange(user._id, "Delivery Men")}
+                      disabled={user.role === "admin"}
                     >
                       <GrUserWorker className="text-xl" />
                     </Button>
                   </TableCell>
                   <TableCell className="px-8">
+
                     <Button
                       variant="outline"
-                      className="hover:bg-yellow-600 bg-yellow-500/80 ml-6"
+                      className={`transition-all ml-6 ${
+                        user.role === "admin"
+                          ? "cursor-not-allowed bg-gray-300"
+                          : "cursor-pointer bg-yellow-500/80 hover:bg-yellow-600"
+                      }`}
                       onClick={() => handleRoleChange(user._id, "Admin")}
+                      disabled={user.role === "admin"}
                     >
                       <FaUserTag className="text-xl" />
                     </Button>

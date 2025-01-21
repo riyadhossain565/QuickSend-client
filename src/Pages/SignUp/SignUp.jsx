@@ -95,6 +95,7 @@ const SignUp = () => {
 
           <div className="lg:w-3/6">
             <form className="space-y-6 pt-12" onSubmit={handleSubmit(onSubmit)}>
+              {/* name input */}
               <div>
                 <input
                   className="w-full pl-4 py-4 rounded-lg bg-gray-100 text-[#646464] focus:outline-none"
@@ -108,6 +109,7 @@ const SignUp = () => {
                   <span className="text-red-600">Name is required</span>
                 )}
               </div>
+              {/* email input */}
               <div>
                 <input
                   className="w-full pl-4 py-4 rounded-lg bg-gray-100 text-[#646464] focus:outline-none"
@@ -120,6 +122,7 @@ const SignUp = () => {
                   <span className="text-red-600">Email is required</span>
                 )}
               </div>
+              {/* Photo input */}
               <div>
                 <input
                   className="w-full pl-4 py-4 rounded-lg bg-gray-100 text-[#646464] focus:outline-none"
@@ -133,6 +136,7 @@ const SignUp = () => {
                   <span className="text-red-600">PhotoURL is required</span>
                 )}
               </div>
+              {/* Password input */}
               <div>
                 <input
                   className="w-full pl-4 py-4 rounded-lg bg-gray-100 text-[#646464] focus:outline-none"
