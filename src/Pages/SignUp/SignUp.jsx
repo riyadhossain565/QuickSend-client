@@ -39,6 +39,7 @@ const SignUp = () => {
         name: data.name,
         email: data.email,
         photo: data.photo,
+        phoneNumber: data.phone,
       }
       const res = await axios.post(`${import.meta.env.VITE_API_URL}/users`, userInfo)
 
@@ -75,7 +76,7 @@ const SignUp = () => {
           <div className="flex items-center">
             <div className="ml-8">
               <h1 className="text-5xl font-extrabold text-[#0d6efd] cinzel-font">
-                <Link to="/">QiuckSend</Link>
+                <Link to="/">QuickSend</Link>
               </h1>
               <h3 className="py-6 text-3xl font-extrabold">
                 Sign Up to Recharge Direct
@@ -120,6 +121,19 @@ const SignUp = () => {
                 />
                 {errors.email && (
                   <span className="text-red-600">Email is required</span>
+                )}
+              </div>
+              {/* phoneNumber input */}
+              <div>
+                <input
+                  className="w-full pl-4 py-4 rounded-lg bg-gray-100 text-[#646464] focus:outline-none"
+                  type="text"
+                  {...register("phone", { required: true })}
+                  placeholder="Enter Your phone Number"
+                  
+                />
+                {errors.phone && (
+                  <span className="text-red-600">Phone Number is required</span>
                 )}
               </div>
               {/* Photo input */}

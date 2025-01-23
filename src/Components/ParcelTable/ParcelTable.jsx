@@ -39,7 +39,7 @@ const ParcelTable = ({ item }) => {
       <TableCell>{parcelType}</TableCell>
       <TableCell>{format(new Date(deliveryDate), "P")}</TableCell>
       <TableCell>
-        {approximateDeliveryDate ? approximateDeliveryDate : "Not Assigned"}
+        {approximateDeliveryDate ? format(new Date(approximateDeliveryDate), "P") : "Not Assigned"}
       </TableCell>
       <TableCell>{format(new Date(bookingDate), "P")}</TableCell>
       <TableCell>{deliveryManId ? deliveryManId : "Not Assigned"}</TableCell>

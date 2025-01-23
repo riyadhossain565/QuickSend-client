@@ -5,12 +5,15 @@ import { IoIosNotifications } from "react-icons/io";
 import { useContext, useState } from "react";
 import { AuthContext } from "@/src/Provider/AuthProvider";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import avatarImg from "../../assets/login/placeholder.jpg"
-
+import avatarImg from "../../assets/login/placeholder.jpg";
+import useUserRole from "@/src/Hooks/useUserRole/useUserRole";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
+  const [userRole] = useUserRole();
+
+  const { role } = userRole || {};
 
   const handleLogout = async () => {
     try {
@@ -33,31 +36,49 @@ const Navbar = () => {
             </Link>
             <div className="text-white flex items-center ">
               <div className="flex items-center gap-3 mr-4">
-                <NavLink to="/" className="hover:text-[#f39c12] hover:underline">Home</NavLink>
+                <NavLink
+                  to="/"
+                  className="text-[#f39c12] hover:underline"
+                >
+                  Home
+                </NavLink>
                 <IoIosNotifications className="text-2xl cursor-pointer hover:text-[#f39c12] " />
               </div>
               {user ? (
                 <>
                   <Avatar
                     onClick={() => setIsOpen(!isOpen)}
-                    className="w-10 h-10 cursor-pointer"
+                    className="w-10 h-10 cursor-pointer border-2 border-[#f39c12]"
                   >
                     <AvatarImage
-                       src={user && user?.photoURL ? user?.photoURL : avatarImg}
+                      src={user && user?.photoURL ? user?.photoURL : avatarImg}
                       alt="Profile Picture"
-                      className="rounded-full hover:border-[#f39c12] hover:border-2"
+                      className="rounded-full "
                     />
                   </Avatar>
 
                   {isOpen && (
                     <div className="absolute rounded-xl shadow-md w-[40vw] md:w-[10vw] bg-black overflow-hidden right-10 top-16 text-sm">
-                      
                       <div className="px-4 py-3 font-semibold">
                         <p title="User Name">{user?.displayName}</p>
                       </div>
-                      <div className="px-4 py-3 hover:text-black hover:underline hover:bg-neutral-100 transition font-semibold">
-                        <Link to="/dashboard">Dashboard</Link>
-                      </div>
+
+                      {role === "user" && (
+                        <div className="px-4 py-3 hover:text-black hover:underline hover:bg-neutral-100 transition font-semibold">
+                          <Link to="/dashboard/book-parcel">Dashboard</Link>
+                        </div>
+                      )}
+                      {role === "deliveryMan" && (
+                        <div className="px-4 py-3 hover:text-black hover:underline hover:bg-neutral-100 transition font-semibold">
+                          <Link to="/dashboard/">Dashboard</Link>
+                        </div>
+                      )}
+                      {role === "admin" && (
+                        <div className="px-4 py-3 hover:text-black hover:underline hover:bg-neutral-100 transition font-semibold">
+                          <Link to="/dashboard/statistics">Dashboard</Link>
+                        </div>
+                      )}
+
                       <div
                         onClick={handleLogout}
                         className="px-4 py-3 hover:text-black hover:underline hover:bg-neutral-100 transition font-semibold cursor-pointer"
@@ -66,10 +87,12 @@ const Navbar = () => {
                       </div>
                     </div>
                   )}
-                    
                 </>
               ) : (
-                <Link className="ml-3 bg-[#f39c12] px-5 py-2 rounded-lg transition hover:bg-[#7a4e09]" to="/signin">
+                <Link
+                  className="ml-3 bg-[#f39c12] px-5 py-2 rounded-lg transition hover:bg-[#7a4e09]"
+                  to="/signin"
+                >
                   Login
                 </Link>
               )}

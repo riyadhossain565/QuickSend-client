@@ -10,11 +10,16 @@ import MyParcels from "../Pages/Dashboard/UserDashboard/MyParcels/MyParcels";
 import MyProfile from "../Pages/Dashboard/UserDashboard/MyProfile/MyProfile";
 import UpdateParcel from "../Components/UpdateParcel/UpdateParcel";
 import AllUsers from "../Pages/Dashboard/AdminDashboard/AllUser/AllUsers";
+import AdminStat from "../Pages/Dashboard/AdminDashboard/AdminStat/AdminStat"
+import AllParcels from "../Pages/Dashboard/AdminDashboard/AllParcels/AllParcels";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import AllDeliveryMan from "../Pages/Dashboard/AdminDashboard/AllDeliveryMan/AllDeliveryMan";
 
 const Route = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -59,8 +64,20 @@ const Route = createBrowserRouter([
       },
       // Admin menu
       {
+        path: "statistics",
+        element: <AdminStat />
+      },
+      {
         path: "all-users",
         element: <AllUsers />
+      },
+      {
+        path: "all-parcels",
+        element: <AllParcels />
+      },
+      {
+        path: "all-deliveryMen",
+        element: <AllDeliveryMan />
       }
     ],
   },

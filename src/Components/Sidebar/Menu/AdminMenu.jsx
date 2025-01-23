@@ -1,18 +1,40 @@
-import React from 'react';
-import { FaBoxes, FaUsers } from 'react-icons/fa';
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import { FaBoxes, FaUsers } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
 import { FaPeopleCarryBox } from "react-icons/fa6";
+import { SiStatista } from "react-icons/si";
+
 
 const AdminMenu = () => {
-    return (
-        <div>
-            <ul className="py-5">
+  return (
+    <div>
+      <ul className="py-5">
+        <li>
+          <NavLink
+            to="/dashboard/statistics"
+            className={({ isActive }) =>
+              `text-lg exo-font flex items-center gap-2 py-3 
+                ${
+                  isActive
+                    ? "bg-gray-200 text-[#333]"
+                    : "hover:underline text-white"
+                }`
+            }
+          >
+            <SiStatista className="text-xl ml-3" />
+            Statistics
+          </NavLink>
+        </li>
         <li>
           <NavLink
             to="/dashboard/all-parcels"
             className={({ isActive }) =>
               `text-lg exo-font flex items-center gap-2 py-3 
-                ${isActive ? "bg-gray-200 text-[#333]" : "hover:underline text-white"}`
+                ${
+                  isActive
+                    ? "bg-gray-200 text-[#333]"
+                    : "hover:underline text-white"
+                }`
             }
           >
             <FaBoxes className="text-xl ml-3" />
@@ -24,7 +46,11 @@ const AdminMenu = () => {
             to="/dashboard/all-users"
             className={({ isActive }) =>
               `text-lg exo-font flex items-center gap-2 py-3 
-                ${isActive ? "bg-gray-200 text-[#333]" : "hover:underline text-white"}`
+                ${
+                  isActive
+                    ? "bg-gray-200 text-[#333]"
+                    : "hover:underline text-white"
+                }`
             }
           >
             <FaUsers className="text-xl ml-3" />
@@ -33,10 +59,14 @@ const AdminMenu = () => {
         </li>
         <li>
           <NavLink
-            to="/dashboard/all-deliveryman"
+            to="/dashboard/all-deliveryMen"
             className={({ isActive }) =>
               `text-lg exo-font flex items-center gap-2 py-3 
-                ${isActive ? "bg-gray-200 text-[#333]" : "hover:underline text-white"}`
+                ${
+                  isActive
+                    ? "bg-gray-200 text-[#333]"
+                    : "hover:underline text-white"
+                }`
             }
           >
             <FaPeopleCarryBox className="text-xl ml-3" />
@@ -44,8 +74,8 @@ const AdminMenu = () => {
           </NavLink>
         </li>
       </ul>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default AdminMenu;

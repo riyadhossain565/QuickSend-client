@@ -46,7 +46,7 @@ const Login = () => {
           <div className="flex items-center">
             <div className="ml-8">
               <h1 className="text-5xl font-extrabold text-[#0d6efd] cinzel-font">
-                <Link to="/">QiuckSend</Link>
+                <Link to="/">QuickSend</Link>
               </h1>
               <h3 className="py-6 text-3xl font-extrabold">
                 Sign In to Recharge Direct
