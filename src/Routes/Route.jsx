@@ -14,6 +14,8 @@ import AdminStat from "../Pages/Dashboard/AdminDashboard/AdminStat/AdminStat"
 import AllParcels from "../Pages/Dashboard/AdminDashboard/AllParcels/AllParcels";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import AllDeliveryMan from "../Pages/Dashboard/AdminDashboard/AllDeliveryMan/AllDeliveryMan";
+import MyDeliveryList from "../Pages/Dashboard/DeliveryDashboard/MyDeliveryList/MyDeliveryList";
+import Myreviews from "../Pages/Dashboard/DeliveryDashboard/MyReviews/Myreviews";
 
 const Route = createBrowserRouter([
   {
@@ -78,6 +80,15 @@ const Route = createBrowserRouter([
       {
         path: "all-deliveryMen",
         element: <AllDeliveryMan />
+      },
+      // deliveryMan menu
+      {
+        path: "my-delivery-list",
+        element: <MyDeliveryList />
+      },
+      {
+        path: "my-reviews",
+        element: <Myreviews />
       }
     ],
   },

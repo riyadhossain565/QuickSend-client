@@ -70,7 +70,7 @@ const Navbar = () => {
                       )}
                       {role === "deliveryMan" && (
                         <div className="px-4 py-3 hover:text-black hover:underline hover:bg-neutral-100 transition font-semibold">
-                          <Link to="/dashboard/">Dashboard</Link>
+                          <Link to="/dashboard/my-delivery-list">Dashboard</Link>
                         </div>
                       )}
                       {role === "admin" && (

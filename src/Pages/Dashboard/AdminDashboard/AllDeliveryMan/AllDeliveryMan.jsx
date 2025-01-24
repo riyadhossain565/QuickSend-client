@@ -6,13 +6,25 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import useUsers from "@/src/Hooks/useUsers/useUsers";
+import useAxiosSecure from "@/src/Hooks/useAxiosSecure/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
 
 const AllDeliveryMan = () => {
-  const [users] = useUsers();
+  // const [users] = useUsers();
 
-  const deliveryMen = users.filter((user) => user.role === "deliveryMan");
+  // const deliveryMen = users.filter((user) => user.role === "deliveryMan");
+  const axiosSecure = useAxiosSecure();
+
+  const { data: deliveryMen = [] } = useQuery({
+    queryKey: ["deliveryMen"],
+    queryFn: async () => {
+      const res = await axiosSecure.get("/users/byRole/deliveryMan");
+      return res.data;
+    },
+  });
+
+
 
   return (
     <div className="bg-gray-100 min-h-screen py-8">
@@ -42,17 +54,18 @@ const AllDeliveryMan = () => {
             </TableHeader>
 
             <TableBody>
+
               {deliveryMen.map((item) => (
-            <TableRow className="border-2 bg-white transition-all hover:bg-gray-200">
-              <TableCell className="px-8">{item.name}</TableCell>
-              <TableCell className="px-8">
-                {item.phoneNumber || "N/A"}
-              </TableCell>
-              {/* <TableCell className="px-8">{item.}</TableCell>
-              <TableCell className="px-8">{user.totalSpent}</TableCell> */}
-             
-            </TableRow>
-          ))}
+                <TableRow className="border-2 bg-white transition-all hover:bg-gray-200">
+                  <TableCell className="px-8">{item.name}</TableCell>
+                  <TableCell className="px-8">
+                    {item.phoneNumber || "N/A"}
+                  </TableCell>
+                   <TableCell className="px-8">{}</TableCell>
+              <TableCell className="px-8">{}</TableCell> 
+                </TableRow>
+              ))}
+
             </TableBody>
           </Table>
         </div>

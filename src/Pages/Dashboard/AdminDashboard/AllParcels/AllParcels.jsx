@@ -108,6 +108,7 @@ const AllParcels = () => {
                   <TableCell className="pl-8">
                     <Button
                       variant="outline"
+                      className="hover:bg-[#f39c12]"
                       onClick={() => handleManage(item)}
                     >
                       Manage
