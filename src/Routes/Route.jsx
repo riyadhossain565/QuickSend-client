@@ -16,6 +16,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import AllDeliveryMan from "../Pages/Dashboard/AdminDashboard/AllDeliveryMan/AllDeliveryMan";
 import MyDeliveryList from "../Pages/Dashboard/DeliveryDashboard/MyDeliveryList/MyDeliveryList";
 import Myreviews from "../Pages/Dashboard/DeliveryDashboard/MyReviews/Myreviews";
+import Payment from "../Components/Payment/Payment";
 
 const Route = createBrowserRouter([
   {
@@ -63,6 +64,10 @@ const Route = createBrowserRouter([
       {
         path: "my-profile",
         element: <MyProfile />
+      },
+      {
+        path: "payment",
+        element: <Payment />
       },
       // Admin menu
       {

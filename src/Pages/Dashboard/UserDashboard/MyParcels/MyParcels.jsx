@@ -46,7 +46,7 @@ const MyParcels = () => {
           {parcel && parcel.length > 0 ? (
             <TableBody>
               {parcel.map((item) => (
-                <ParcelTable key={item._id} item={item} />
+                <ParcelTable key={item._id} item={item} refetch={refetch}/>
               ))}
             </TableBody>
           ) : (

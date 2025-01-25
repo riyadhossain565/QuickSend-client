@@ -7,6 +7,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import useAxiosPublic from "@/src/Hooks/useAxiosPublic/useAxiosPublic";
 import useAxiosSecure from "@/src/Hooks/useAxiosSecure/useAxiosSecure";
 import Loadingspinner from "@/src/Shared/LoadingSpinner/Loadingspinner";
 import { useQuery } from "@tanstack/react-query";
@@ -18,6 +19,7 @@ import Swal from "sweetalert2";
 
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
 
   const [currentPage, setCurrentPage] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(5);

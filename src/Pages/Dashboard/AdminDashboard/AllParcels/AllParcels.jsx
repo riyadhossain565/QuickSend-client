@@ -46,10 +46,10 @@ const AllParcels = () => {
         approximateDeliveryDate: deliveryDate,
         status: "On The Way",
       });
-      console.log(data); 
+      console.log(data);
       toast.success("Delivery Man assigned successfully!");
       setIsOpen(false);
-  
+
       // Refetch parcels to ensure the UI shows updated data
       refetch();
     } catch (error) {
@@ -57,7 +57,7 @@ const AllParcels = () => {
       toast.error("Failed to assign parcel.");
     }
   };
-   
+
   // console.log("delivery Men--->",deliveryMen);
   // console.log(selectedDeliveryMan);
 
@@ -93,7 +93,10 @@ const AllParcels = () => {
             </TableHeader>
             <TableBody>
               {allParcels.map((item, index) => (
-                <TableRow key={item._id} className="border-2 bg-gray-100 transition-all hover:bg-gray-200">
+                <TableRow
+                  key={item._id}
+                  className="border-2 bg-gray-100 transition-all hover:bg-gray-200"
+                >
                   <TableCell className="">{index + 1}</TableCell>
                   <TableCell className="pl-8">{item.name}</TableCell>
                   <TableCell className="pl-8">{item.phoneNumber}</TableCell>
@@ -104,7 +107,17 @@ const AllParcels = () => {
                     {format(new Date(item.deliveryDate), "P")}
                   </TableCell>
                   <TableCell className="pl-8">{item.price}</TableCell>
-                  <TableCell className="pl-8">{item.status}</TableCell>
+                  <TableCell
+                    className={`font-semibold ${
+                      item.status === "Delivered"
+                        ? "text-green-500"
+                        : item.status === "Pending"
+                        ? "text-yellow-500"
+                        : "text-red-500"
+                    }`}
+                  >
+                    {item.status}
+                  </TableCell>
                   <TableCell className="pl-8">
                     <Button
                       variant="outline"
@@ -150,7 +163,7 @@ const AllParcels = () => {
               </label>
               <select
                 id="options"
-                 value={selectedDeliveryMan}
+                value={selectedDeliveryMan}
                 onChange={(e) => setSelectedDeliveryMan(e.target.value)}
                 className="w-full border border-gray-300 rounded-lg p-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
@@ -194,6 +207,7 @@ const AllParcels = () => {
           </div>
         </div>
       )}
+      
     </div>
   );
 };

@@ -53,7 +53,7 @@ const AuthProvider = ({ children }) => {
   // onAuthStateChange
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log("current user--->", currentUser);
+      // console.log("current user--->", currentUser);
       setUser(currentUser);
 
       if (currentUser) {
@@ -66,19 +66,18 @@ const AuthProvider = ({ children }) => {
           }
         })
       } else {
-        // todo: remove token
+        // remove token
         localStorage.removeItem('access-token');
       }
 
       setLoading(false);
-     
-
+    
     });
 
     return () => {
       return unsubscribe;
     };
-  }, []);
+  }, [axiosPublic]);
 
   const authInfo = {
     user,

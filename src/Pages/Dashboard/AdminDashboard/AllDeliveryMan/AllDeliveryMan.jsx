@@ -11,15 +11,14 @@ import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
 
 const AllDeliveryMan = () => {
-  // const [users] = useUsers();
-
-  // const deliveryMen = users.filter((user) => user.role === "deliveryMan");
+  
   const axiosSecure = useAxiosSecure();
 
   const { data: deliveryMen = [] } = useQuery({
     queryKey: ["deliveryMen"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/users/byRole/deliveryMan");
+      const res = await axiosSecure.get("/all-deliveryMen");
+      console.log(res.data)
       return res.data;
     },
   });
@@ -61,8 +60,8 @@ const AllDeliveryMan = () => {
                   <TableCell className="px-8">
                     {item.phoneNumber || "N/A"}
                   </TableCell>
-                   <TableCell className="px-8">{}</TableCell>
-              <TableCell className="px-8">{}</TableCell> 
+                   <TableCell className="px-8">{item.parcelsDeliveredCount}</TableCell>
+              <TableCell className="px-8">{item.averageReview}</TableCell> 
                 </TableRow>
               ))}
 

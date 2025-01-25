@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import Charts from "./Charts";
 
 const Statistics = () => {
   return (
@@ -6,7 +7,10 @@ const Statistics = () => {
       <Helmet>
         <title>Statistics | Dashboard</title>
       </Helmet>
-      <h1>Statistics</h1>
+
+      <h1 className="text-4xl cinzel-font text-center my-6 font-bold">Statistics</h1>
+      
+      <Charts />
     </div>
   );
 };

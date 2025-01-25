@@ -11,7 +11,7 @@ const Sidebar = () => {
   const [userRole] = useUserRole();
 
   const {role} = userRole || {}
-  console.log(userRole);
+  // console.log(userRole);
 
   // sidebar handler
   const handleToggle = () => {

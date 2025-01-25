@@ -4,7 +4,7 @@ import useAuth from "../useAuth/useAuth";
 
 
 const axiosSecure = axios.create({
-    baseURL: import.meta.env.VITE_API_URL,
+    baseURL: "https://quick-send-server.vercel.app/",
 })
 
 const useAxiosSecure = () => {
