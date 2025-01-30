@@ -33,10 +33,43 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const signInWithGoogle = () => {
+
+  const signInWithGoogle = async () => {
     setLoading(true);
-    return signInWithPopup(auth, googleProvider);
+    try {
+      // Sign in with Google
+      const result = await signInWithPopup(auth, googleProvider);
+      const user = result.user;
+  
+      // Extract user info
+      const { displayName, email, photoURL } = user;
+  
+      // Prepare user info to be saved in the DB
+      const userInfo = {
+        name: displayName,
+        email: email,
+        photo: photoURL,
+      };
+  
+      // Store user info in the database
+      await axiosPublic.post("/users", userInfo);
+  
+      // Set the user in context
+      setUser(user);
+  
+      // Save JWT token
+      const res = await axiosPublic.post("/jwt", { email });
+      if (res.data.token) {
+        localStorage.setItem("access-token", res.data.token);
+      }
+  
+    } catch (error) {
+      console.error("Error during Google sign-in:", error);
+    } finally {
+      setLoading(false);
+    }
   };
+  
 
   const logOut = () => {
     setLoading(true);
@@ -53,12 +86,13 @@ const AuthProvider = ({ children }) => {
   // onAuthStateChange
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      // console.log("current user--->", currentUser);
+      console.log("current user--->", currentUser);
       setUser(currentUser);
 
       if (currentUser) {
         //get token and store client
         const userInfo = { email: currentUser.email };
+        // axiosPublic.post('/users', userInfo);
         axiosPublic.post("/jwt", userInfo)
         .then(res => {
           if(res.data.token){
@@ -75,9 +109,9 @@ const AuthProvider = ({ children }) => {
     });
 
     return () => {
-      return unsubscribe;
+      return unsubscribe()
     };
-  }, [axiosPublic]);
+  }, []);
 
   const authInfo = {
     user,

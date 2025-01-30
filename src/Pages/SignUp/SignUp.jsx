@@ -9,11 +9,12 @@ import { AuthContext } from "@/src/Provider/AuthProvider";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
-import axios from "axios";
+import useAxiosPublic from "@/src/Hooks/useAxiosPublic/useAxiosPublic";
 
 const SignUp = () => {
 
   const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic()
 
   const {
     register,
@@ -41,8 +42,8 @@ const SignUp = () => {
         photo: data.photo,
         phoneNumber: data.phone,
       }
-      const res = await axios.post(`${import.meta.env.VITE_API_URL}/users`, userInfo)
-
+      const res = await axiosPublic.post('/users', userInfo)
+      console.log(res.data)
       if(res.data.insertedId){
         console.log("user Add to the databse")
         reset()

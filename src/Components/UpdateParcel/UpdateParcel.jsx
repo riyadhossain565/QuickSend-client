@@ -1,4 +1,5 @@
 import useAuth from "@/src/Hooks/useAuth/useAuth";
+import useAxiosPublic from "@/src/Hooks/useAxiosPublic/useAxiosPublic";
 import useAxiosSecure from "@/src/Hooks/useAxiosSecure/useAxiosSecure";
 import useUpdateParcel from "@/src/Hooks/useUpdateParcel/useUpdateParcel";
 import React, { useState } from "react";
@@ -15,6 +16,7 @@ const UpdateParcel = () => {
   const axiosSecure = useAxiosSecure();
   const [price, setPrice] = useState(parcel?.price || 50);
   const navigate = useNavigate()
+  const axiosPublic = useAxiosPublic()
 
   // Handle price calculation based on parcel weight
   const handleWeightChange = (e) => {
@@ -55,7 +57,7 @@ const UpdateParcel = () => {
 
     try {
       // 1. make a patch request
-      await axiosSecure.patch(`/parcels/${parcel._id}`, updateBooking);
+      await axiosPublic.patch(`/parcels/${parcel._id}`, updateBooking);
       // 2. Reset form
       form.reset();
       // 3. sweet alert

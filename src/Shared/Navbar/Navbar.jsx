@@ -36,10 +36,7 @@ const Navbar = () => {
             </Link>
             <div className="text-white flex items-center ">
               <div className="flex items-center gap-3 mr-4">
-                <NavLink
-                  to="/"
-                  className="text-[#f39c12] hover:underline"
-                >
+                <NavLink to="/" className="text-[#f39c12] hover:underline">
                   Home
                 </NavLink>
                 <IoIosNotifications className="text-2xl cursor-pointer hover:text-[#f39c12] " />
@@ -70,7 +67,9 @@ const Navbar = () => {
                       )}
                       {role === "deliveryMan" && (
                         <div className="px-4 py-3 hover:text-black hover:underline hover:bg-neutral-100 transition font-semibold">
-                          <Link to="/dashboard/my-delivery-list">Dashboard</Link>
+                          <Link to="/dashboard/my-delivery-list">
+                            Dashboard
+                          </Link>
                         </div>
                       )}
                       {role === "admin" && (

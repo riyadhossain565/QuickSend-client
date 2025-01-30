@@ -17,6 +17,7 @@ import AllDeliveryMan from "../Pages/Dashboard/AdminDashboard/AllDeliveryMan/All
 import MyDeliveryList from "../Pages/Dashboard/DeliveryDashboard/MyDeliveryList/MyDeliveryList";
 import Myreviews from "../Pages/Dashboard/DeliveryDashboard/MyReviews/Myreviews";
 import Payment from "../Components/Payment/Payment";
+import PaymentSuccess from "../Components/Payment/PaymentSuccess";
 
 const Route = createBrowserRouter([
   {
@@ -66,8 +67,12 @@ const Route = createBrowserRouter([
         element: <MyProfile />
       },
       {
-        path: "payment",
+        path: "payment/:id",
         element: <Payment />
+      },
+      {
+        path: "payment-success",
+        element: <PaymentSuccess />
       },
       // Admin menu
       {

@@ -13,12 +13,12 @@ const SocialLogin = () => {
   const handleGoogleSignIn = () => {
     signInWithGoogle()
     .then((result) => {
-      console.log(result.user);
+      // console.log(result.user);
       toast.success("User Successfully SignIn")
       navigate(from, { replace: true });
     })   
   }
-  
+
   return (
     <div
       onClick={handleGoogleSignIn}

@@ -152,7 +152,7 @@ const ParcelTable = ({ item, refetch }) => {
           </Button>
         </TableCell>
         <TableCell>
-          <Link to={`/dashboard/payment`}>
+          <Link to={`/dashboard/payment/${_id}`}>
             <Button
               variant="outline"
               className=" bg-blue-400 hover:bg-blue-500 px-2 py-1"
