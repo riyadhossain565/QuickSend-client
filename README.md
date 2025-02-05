@@ -71,11 +71,11 @@ Ensure you have the following installed on your system:
 
 1️⃣ **Clone the Repository:**  
 ```sh
-git clone https://github.com/your-github-username/quicksend-frontend.git
+git clone https://github.com/riyadhossain565/QuickSend-client.git
 ```
 2️⃣ **Navigate to the Project Directory:**  
 ```sh
-cd quicksend-frontend
+cd quicksend-client
 ```
 3️⃣ **Install Dependencies:**  
 ```sh
