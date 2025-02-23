@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import Container from "../Container";
 import logoGif from "../../assets/logo/logo-gif.gif";
 import { IoIosNotifications } from "react-icons/io";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "@/src/Provider/AuthProvider";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import avatarImg from "../../assets/login/placeholder.jpg";
@@ -12,6 +12,23 @@ const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   const [userRole] = useUserRole();
+
+  // scroll the navbar
+  const [scrolling, setScrolling] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolling(true);
+      } else {
+        setScrolling(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
 
   const { role } = userRole || {};
 
@@ -25,8 +42,10 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed w-full z-10 bg-gray-900/100 opacity-90">
-      <div className="py-4">
+    <div className="fixed w-full z-10 ">
+      <div className={`transition-all duration-300 py-4 ${
+          scrolling ? "bg-gray-900/100 shadow-md" : "bg-transparent"
+        }`}>
         <Container>
           <div className="flex justify-between items-center">
             {/*Logo and title */}
