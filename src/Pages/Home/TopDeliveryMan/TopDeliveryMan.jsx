@@ -20,7 +20,7 @@ const TopDeliveryMen = () => {
     <div className="mb-20">
       <Container>
         <h1 className="text-center font-bold text-5xl mb-4 cinzel-font">Top Delivery Men</h1>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-14 my-8">
           {topDeliveryMen.map((man, index) => (
             <div key={index} className="bg-[#F0EFE6] px-10 py-8 shadow-lg rounded-lg">
               <img

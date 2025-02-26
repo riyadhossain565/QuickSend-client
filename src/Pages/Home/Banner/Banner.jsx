@@ -35,7 +35,7 @@ const Banner = () => {
                   placeholder="Search Here"
                 />
                 <input
-                  className="text-white bg-[#f39c12] px-10 py-3 rounded-lg cursor-pointer"
+                  className="text-white bg-[#f39c12] hover:bg-[#925e0b] px-12 py-3 rounded-lg cursor-pointer"
                   type="button"
                   value="Go"
                 />
