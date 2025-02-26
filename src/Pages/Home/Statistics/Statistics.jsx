@@ -36,9 +36,12 @@ const Statistics = () => {
     >
       <div className="opacity-90 py-24">
         <Container>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl text-center text-white font-bold cinzel-font pb-10">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl text-center text-white font-bold cinzel-font pb-2">
             Tracking Our Success
           </h1>
+          <h3 className="text-lg text-center text-white pb-10">
+            Real-Time Updates on Every Delivery, Every Step of the Way.
+          </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div className="flex gap-3 px-10 py-8 border bg-black bg-opacity-50 rounded-lg">

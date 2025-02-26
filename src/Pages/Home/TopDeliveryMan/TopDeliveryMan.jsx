@@ -19,10 +19,18 @@ const TopDeliveryMen = () => {
   return (
     <div className="mb-20">
       <Container>
-        <h1 className="text-center font-bold text-5xl mb-4 cinzel-font">Top Delivery Men</h1>
+        <h1 className="text-center font-bold text-5xl mb-2 cinzel-font">
+          Top Delivery Men
+        </h1>
+        <h3 className="text-lg text-center mb-6">
+          Meet Our Most Reliable and Efficient Delivery Experts.
+        </h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-14 my-8">
           {topDeliveryMen.map((man, index) => (
-            <div key={index} className="bg-[#F0EFE6] px-10 py-8 shadow-lg rounded-lg">
+            <div
+              key={index}
+              className="bg-[#F0EFE6] px-10 py-8 shadow-lg rounded-lg"
+            >
               <img
                 src={man.photo}
                 alt={man.name}
