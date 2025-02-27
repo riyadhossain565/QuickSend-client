@@ -5,6 +5,7 @@ import Statistics from "../Statistics/Statistics";
 import { Helmet } from "react-helmet-async";
 import TopDeliveryMen from "../TopDeliveryMan/TopDeliveryMan";
 import DeliverEverything from "../DeliverEverything/DeliverEverything";
+import NewsLetter from "../NewsLetter/NewsLetter";
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
       <DeliverEverything></DeliverEverything>
       <Statistics></Statistics>
       <TopDeliveryMen></TopDeliveryMen>
+      <NewsLetter></NewsLetter>
     </div>
   );
 };

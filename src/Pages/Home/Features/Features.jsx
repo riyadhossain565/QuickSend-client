@@ -1,6 +1,5 @@
 import React from "react";
 import Container from "../../../Shared/Container";
-import { FaShippingFast } from "react-icons/fa";
 import animation1 from "../../../assets/card/Animation-delivery.json";
 import animation2 from "../../../assets/card/Animation-safety.json";
 import animation3 from "../../../assets/card/Animation - trust.json";
