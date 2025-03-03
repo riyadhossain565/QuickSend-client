@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet-async";
 import TopDeliveryMen from "../TopDeliveryMan/TopDeliveryMan";
 import DeliverEverything from "../DeliverEverything/DeliverEverything";
 import NewsLetter from "../NewsLetter/NewsLetter";
+import HowItWorks from "../HowItWorks/HowItWorks";
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
       <Features></Features>
       <DeliverEverything></DeliverEverything>
       <Statistics></Statistics>
+      <HowItWorks></HowItWorks>
       <TopDeliveryMen></TopDeliveryMen>
       <NewsLetter></NewsLetter>
     </div>
