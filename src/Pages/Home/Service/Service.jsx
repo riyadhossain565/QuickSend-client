@@ -4,7 +4,7 @@ import Lottie from 'lottie-react';
 
 const Service = () => {
     return (
-        <div className='mb-12'>
+        <div className='mt-16'>
             <Container>
                 <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
                     <div>

@@ -5,7 +5,7 @@ import groImg from "../../../assets/images/gro.png";
 
 const DeliverEverything = () => {
   return (
-    <div className="py-10">
+    <div className="pt-16">
       <Container>
         <div className="w-3/5 mx-auto">
           <h1 className="text-3xl md:text-4xl lg:text-5xl text-center font-bold cinzel-font mb-2">

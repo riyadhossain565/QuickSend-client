@@ -4,7 +4,7 @@ import Lottie from "lottie-react";
 
 const NewsLetter = () => {
   return (
-    <div className="pb-20">
+    <div className="pb-20 pt-10">
       <Container>
         <div className="flex items-center flex-col-reverse md:flex-row">
           <div>

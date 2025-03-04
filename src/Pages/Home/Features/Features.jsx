@@ -7,7 +7,7 @@ import Lottie from "lottie-react";
 
 const Features = () => {
   return (
-    <div className="py-12">
+    <div className="pt-20">
       <Container>
         <div className="w-3/5 mx-auto">
           <h1 className="text-3xl md:text-4xl lg:text-5xl text-center font-bold cinzel-font my-8">

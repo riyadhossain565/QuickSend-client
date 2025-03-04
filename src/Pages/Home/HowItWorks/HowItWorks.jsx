@@ -9,7 +9,7 @@ import { GiCardboardBox } from "react-icons/gi";
 
 const HowItWorks = () => {
   return (
-    <div className="pb-20">
+    <div className="pt-16">
       <Container>
         <div>
           <h1 className="text-3xl md:text-4xl lg:text-5xl text-center font-bold cinzel-font mt-8 mb-4">

@@ -31,7 +31,7 @@ const Statistics = () => {
 
   return (
     <div
-      className="mb-20 w-full bg-center bg-cover"
+      className="mt-16 w-full bg-center bg-cover"
       style={{ backgroundImage: `url(${bgImg})` }}
     >
       <div className="opacity-90 py-24">
