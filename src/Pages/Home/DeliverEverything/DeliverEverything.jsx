@@ -17,7 +17,7 @@ const DeliverEverything = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14 my-10">
-          <div className="bg-[#F0EFE6] px-10 pb-6 text-center rounded-2xl transition-all hover:shadow-lg">
+          <div className="bg-[#F0EFE6] px-10 pb-6 text-center rounded-lg transition-all hover:shadow-lg">
             <div className="w-36 mx-auto py-4">
               <img src={burgImg} alt="" />
             </div>
@@ -30,7 +30,7 @@ const DeliverEverything = () => {
               cravings anytime, anywhere.
             </p>
           </div>
-          <div className="bg-[#F0EFE6] px-10 pb-6 text-center rounded-2xl transition-all hover:shadow-lg">
+          <div className="bg-[#F0EFE6] px-10 pb-6 text-center rounded-lg transition-all hover:shadow-lg">
             <div className="w-28 mx-auto py-4">
               <img src={boxImg} alt="" />
             </div>
@@ -41,7 +41,7 @@ const DeliverEverything = () => {
               timely and reliable shipping to your desired destination.
             </p>
           </div>
-          <div className="bg-[#F0EFE6] px-10 pb-6 text-center rounded-2xl transition-all hover:shadow-lg">
+          <div className="bg-[#F0EFE6] px-10 pb-6 text-center rounded-lg transition-all hover:shadow-lg">
             <div className="w-28 mx-auto py-4">
               <img src={groImg} alt="" />
             </div>

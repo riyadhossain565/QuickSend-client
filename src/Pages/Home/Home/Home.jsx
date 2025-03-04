@@ -7,6 +7,7 @@ import TopDeliveryMen from "../TopDeliveryMan/TopDeliveryMan";
 import DeliverEverything from "../DeliverEverything/DeliverEverything";
 import NewsLetter from "../NewsLetter/NewsLetter";
 import HowItWorks from "../HowItWorks/HowItWorks";
+import Service from "../Service/Service";
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
       <Banner></Banner>
       <Features></Features>
       <DeliverEverything></DeliverEverything>
+      <Service></Service>
       <Statistics></Statistics>
       <HowItWorks></HowItWorks>
       <TopDeliveryMen></TopDeliveryMen>
